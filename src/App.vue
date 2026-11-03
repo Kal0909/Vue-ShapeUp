@@ -96,6 +96,12 @@ function addExercise() {
   errorMessage.value = ''
 }
 
+function removeExercise(id) {
+  exercises.value = exercises.value.filter(
+      exercise => exercise.id !== id
+  )
+}
+
 </script>
 
 
@@ -149,6 +155,12 @@ function addExercise() {
               </span>
             </label>
             <!-- STEP 6: Remove button goes here. -->
+            <button type="button" class="remove-button"
+                    @click="removeExercise(exercise.id)"
+                    :aria-label="'Remove ' + exercise.name">
+              Remove
+            </button>
+
           </li>
         </ul>
 
