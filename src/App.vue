@@ -212,7 +212,6 @@ function clearCompleted() {
 
 
 <style>
-<style>
 :root {
   --background: #f0f4f8;
   --surface: #ffffff;
@@ -358,6 +357,4 @@ progress { width: 100%; height: 20px; accent-color: var(--brand); }
   .hero, .panel { padding: 24px; }
   .exercise { flex-wrap: wrap; }
 }
-</style>
-
 </style>
