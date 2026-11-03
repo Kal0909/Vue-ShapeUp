@@ -102,6 +102,21 @@ function removeExercise(id) {
   )
 }
 
+const completedCount = computed(() => {
+  return exercises.value.filter(exercise => exercise.completed).length
+})
+const totalMinutes = computed(() => {
+  return exercises.value.reduce(
+      (total, exercise) => total + exercise.minutes, 0
+  )
+})
+const progressPercent = computed(() => {
+  if (exercises.value.length === 0) return 0
+  return Math.round(
+      (completedCount.value / exercises.value.length) * 100
+  )
+})
+
 </script>
 
 
@@ -113,6 +128,22 @@ function removeExercise(id) {
       <p>Small steps. Stronger habits.</p>
     </header>
     <!-- STEP 7: Progress summary goes here. -->
+    <section class="panel summary" aria-labelledby="progress-heading">
+      <div>
+        <h2 id="progress-heading">Your progress</h2>
+        <p aria-live="polite">
+          {{ completedCount }} of {{ exercises.length }} exercises completedgit
+        </p>
+        <p>{{ totalMinutes }} minutes planned</p>
+      </div>
+      <div>
+        <label for="workout-progress">{{ progressPercent }}% complete</label>
+        <progress id="workout-progress" :value="progressPercent" max="100">
+          {{ progressPercent }}%
+        </progress>
+      </div>
+    </section>
+
     <div class="dashboard-grid">
       <section class="panel">
         <h2>Plan an exercise</h2>
