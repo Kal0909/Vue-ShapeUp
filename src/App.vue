@@ -117,6 +117,12 @@ const progressPercent = computed(() => {
   )
 })
 
+function clearCompleted() {
+  exercises.value = exercises.value.filter(
+      exercise => !exercise.completed
+  )
+}
+
 </script>
 
 
@@ -162,8 +168,6 @@ const progressPercent = computed(() => {
         </form>
 
 
-
-
       </section>
       <section class="panel">
         <h2>Your workout</h2>
@@ -194,6 +198,12 @@ const progressPercent = computed(() => {
 
           </li>
         </ul>
+
+        <button type="button" class="secondary-button"
+                @click="clearCompleted" :disabled="completedCount === 0">
+          Clear completed
+        </button>
+
 
       </section>
     </div>
